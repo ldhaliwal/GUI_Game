@@ -3,15 +3,21 @@ import java.awt.*;
 
 public class Die
 {
+    private final int DIE_WIDTH = 160;
+    private final int DIE_HEIGHT = 160;
     //Instance variable
     private int sides;
     private int value;
 
+    private PigViewer window;
+
     private Image image;
 
     //Defult constructor
-    public Die()
+    public Die(PigViewer window)
     {
+        this.window = window;
+
         sides = 6;
         value = 0;
     }
@@ -64,8 +70,10 @@ public class Die
         return min;
     }
 
-    public void draw(Graphics g){
+    public void draw(Graphics g, int x){
         image = new ImageIcon("Resources/" + this.value + ".png").getImage();
+        //find a way to fix the x value here
+        g.drawImage(image, x, DIE_HEIGHT, DIE_WIDTH, DIE_HEIGHT, window);
     }
 
     public String toString()

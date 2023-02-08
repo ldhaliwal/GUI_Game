@@ -15,15 +15,12 @@ public class Pig {
     //Initializes turn counter
     public static int numTurns;
 
-    private static PigViewer window;
+    private PigViewer window;
 
-    public static void main(String[] args) {
+    public Pig(){
         //Creates two default 6 sided dice
-        d1 = new Die();
-        d2 = new Die();
-
-        //Starts the game
-        playingGame = true;
+        d1 = new Die(window);
+        d2 = new Die(window);
 
         //Creates the player's scorecard:
         playerScore = 0;
@@ -32,6 +29,17 @@ public class Pig {
         numTurns = 0;
 
         window = new PigViewer(this, d1, d2);
+    }
+
+    public static void main(String[] args) {
+
+        Pig p = new Pig();
+        p.run();
+    }
+
+    public void run(){
+        //Starts the game
+        playingGame = true;
 
         //Prints instructions
         printInstructions();
@@ -53,7 +61,7 @@ public class Pig {
         }
     }
 
-    public static int takeTurn()
+    public int takeTurn()
     {
         boolean takingTurn = true;
 
@@ -124,7 +132,7 @@ public class Pig {
         return 0;
     }
 
-    public static int roll(Die d1, Die d2)
+    public int roll(Die d1, Die d2)
     {
         //Rolls both die
         int d1Value = d1.roll();
@@ -146,7 +154,7 @@ public class Pig {
         }
     }
 
-    public static void printInstructions()
+    public void printInstructions()
     {
         //Gets the number of sides each die has
         int d1Sides = d1.getSides();
@@ -168,23 +176,23 @@ public class Pig {
         System.out.println();
     }
 
-    public static Die getD1() {
+    public Die getD1() {
         return d1;
     }
 
-    public static Die getD2() {
+    public Die getD2() {
         return d2;
     }
 
-    public static boolean isPlayingGame() {
+    public boolean isPlayingGame() {
         return playingGame;
     }
 
-    public static int getPlayerScore() {
+    public int getPlayerScore() {
         return playerScore;
     }
 
-    public static int getNumTurns() {
+    public int getNumTurns() {
         return numTurns;
     }
 }
