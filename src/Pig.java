@@ -1,5 +1,3 @@
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Pig {
@@ -22,6 +20,8 @@ public class Pig {
     private PigViewer window;
 
     public Pig(){
+        window = new PigViewer(this, d1, d2);
+
         //Creates two default 6 sided dice
         d1 = new Die(window);
         d2 = new Die(window);
@@ -32,12 +32,10 @@ public class Pig {
 
         //Set turn counter to 0
         numTurns = 0;
-
-        window = new PigViewer(this, d1, d2);
     }
 
     public static void main(String[] args) {
-
+        //runs the game
         Pig p = new Pig();
         p.run();
     }
@@ -45,10 +43,12 @@ public class Pig {
     public void run(){
         //Prints instructions
         printInstructions();
+        //updates the window to draw the instructions on screen
         window.setScreenStatus(0);
         window.repaint();
 
         Scanner s = new Scanner(System.in);
+
 
         System.out.println("Type '1' to begin!");
         int input = s.nextInt();
@@ -56,14 +56,19 @@ public class Pig {
         if (input == 1){
             //Starts the game
             playingGame = true;
+            //sets screen status to display the playing screen
+            window.setScreenStatus(1);
+            window.repaint();
         }
+        else{
+            System.out.println("Not a valid input");
+        }
+
 
         while(playingGame)
         {
-            window.setScreenStatus(1);
-            window.repaint();
-
             turnScore = 0;
+            //Starts the user's turn
             playerScore += takeTurn();
             window.repaint();
 
@@ -77,16 +82,14 @@ public class Pig {
 
     public int takeTurn()
     {
-        boolean takingTurn = true;
 
         //Makes a new scanner
         Scanner scanner = new Scanner(System.in);
 
-        //Intiallize the counter for the roll score and turn score
-        int rollScore = 0;
+        //Initialize the counter for the roll score and turn score
+        int rollScore;
 
-
-        while(takingTurn)
+        while(true)
         {
             //Asks the player to roll
             System.out.println();
@@ -109,11 +112,18 @@ public class Pig {
                     //Checks if the game is won
                     if((playerScore + turnScore) >= 100)
                     {
+                        //if the game is won, update number of turns
                         numTurns++;
+
+                        //set window to display winning screen
                         window.setScreenStatus(2);
                         window.repaint();
+
+                        //display win message in terminal
                         System.out.println("Game over, You win!");
                         System.out.println("You won in "+numTurns+" turns!");
+
+                        //end the game
                         playingGame = false;
                         return 0;
                     }
@@ -132,19 +142,12 @@ public class Pig {
                 numTurns++;
                 return turnScore;
             }
-            //Easter egg (I needed another dice method)
-            else if(answer.equals("this is a dicey move"))
-            {
-                d1.easterEgg();
-                return 0;
-            }
             else
             {
                 System.out.println("Not a valid input");
                 return 0;
             }
         }
-        return 0;
     }
 
     public int roll(Die d1, Die d2)
@@ -191,17 +194,6 @@ public class Pig {
         System.out.println();
     }
 
-    public Die getD1() {
-        return d1;
-    }
-
-    public Die getD2() {
-        return d2;
-    }
-
-    public boolean isPlayingGame() {
-        return playingGame;
-    }
 
     public int getPlayerScore() {
         return playerScore;

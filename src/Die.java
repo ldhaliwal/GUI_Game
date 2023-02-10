@@ -13,7 +13,7 @@ public class Die
 
     private Image image;
 
-    //Defult constructor
+    //Default constructor
     public Die(PigViewer window)
     {
         this.window = window;
