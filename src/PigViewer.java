@@ -9,8 +9,8 @@ public class PigViewer extends JFrame{
     private final int d1X = 160;
     private final int d2X = 480;
 
-    private final int WIN_X = 240;
-    private final int WIN_Y = 400;
+    private final int WIN_X = 315;
+    private final int WIN_Y = 600;
 
     private Image image;
 
@@ -47,12 +47,24 @@ public class PigViewer extends JFrame{
             //TODO: show instructions image
             image = new ImageIcon("Resources/Instructions.png").getImage();
             g.drawImage(image, 0, 22, WINDOW_WIDTH, WINDOW_HEIGHT, this);
+
         }
         else if (screenStatus == 1) {
             //TODO: show playing screen
-
+            image = new ImageIcon("Resources/Turn.png").getImage();
+            g.drawImage(image, 0, 22, WINDOW_WIDTH, WINDOW_HEIGHT, this);
             d1.draw(g, d1X);
             d2.draw(g, d2X);
+
+            g.setFont(new Font("Serif", Font.BOLD, 100));
+
+            String turns = String.valueOf(p.getNumTurns());
+            String total = String.valueOf(p.getPlayerScore());
+            String thisTurn = String.valueOf(p.getTurnScore());
+
+            g.drawString(turns, 350, 780);
+            g.drawString(total, 600, 600);
+            g.drawString(thisTurn, 160, 600);
         }
         else if (screenStatus == 2){
             //TODO: show winning screen
@@ -60,6 +72,7 @@ public class PigViewer extends JFrame{
             g.drawImage(image, 0, 22, WINDOW_WIDTH, WINDOW_HEIGHT, this);
 
             String turns = String.valueOf(p.getNumTurns());
+            g.setFont(new Font("Serif", Font.BOLD, 100));
             g.drawString(turns, WIN_X, WIN_Y);
         }
     }

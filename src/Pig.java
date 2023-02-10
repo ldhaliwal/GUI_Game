@@ -1,3 +1,5 @@
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Pig {
@@ -15,6 +17,8 @@ public class Pig {
     //Initializes turn counter
     public static int numTurns;
 
+    public int  turnScore;
+
     private PigViewer window;
 
     public Pig(){
@@ -24,6 +28,7 @@ public class Pig {
 
         //Creates the player's scorecard:
         playerScore = 0;
+        turnScore = 0;
 
         //Set turn counter to 0
         numTurns = 0;
@@ -38,20 +43,29 @@ public class Pig {
     }
 
     public void run(){
-        //Starts the game
-        playingGame = true;
-
         //Prints instructions
         printInstructions();
         window.setScreenStatus(0);
         window.repaint();
+
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Type '1' to begin!");
+        int input = s.nextInt();
+
+        if (input == 1){
+            //Starts the game
+            playingGame = true;
+        }
 
         while(playingGame)
         {
             window.setScreenStatus(1);
             window.repaint();
 
+            turnScore = 0;
             playerScore += takeTurn();
+            window.repaint();
 
             //Only prints the score if the game is not over
             if(playingGame)
@@ -70,7 +84,7 @@ public class Pig {
 
         //Intiallize the counter for the roll score and turn score
         int rollScore = 0;
-        int turnScore = 0;
+
 
         while(takingTurn)
         {
@@ -84,6 +98,7 @@ public class Pig {
             if(answer.equals("r"))
             {
                 rollScore = roll(d1, d2);
+                window.repaint();
                 //If the roll was not doubles,
                 //adds the roll score to the turn score
                 if(rollScore > 0)
@@ -194,5 +209,9 @@ public class Pig {
 
     public int getNumTurns() {
         return numTurns;
+    }
+
+    public int getTurnScore() {
+        return turnScore;
     }
 }
