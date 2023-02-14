@@ -27,11 +27,8 @@ public class PigViewer extends JFrame{
     private Die d1;
     private Die d2;
 
-    public PigViewer(Pig p, Die d1, Die d2){
+    public PigViewer(Pig p){
         this.p = p;
-
-        this.d1 = d1;
-        this.d2 = d2;
 
         screenStatus = 0;
 
@@ -49,8 +46,13 @@ public class PigViewer extends JFrame{
         return screenStatus;
     }
 
+    public void setDice(Die d1, Die d2) {
+        this.d1 = d1;
+        this.d2 = d2;
+    }
+
+
     public void paint(Graphics g){
-        //TODO: draw white screen
         g.drawRect(0, 22, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         //shows the instructions when the program is first run

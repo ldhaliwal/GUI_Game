@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d05cfa68-a045-4c09-9a0c-e20e0428e035" name="Changes" comment="got project to work, need to define constants for turn display values, fix display things a bit">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="d05cfa68-a045-4c09-9a0c-e20e0428e035" name="Changes" comment="Finished project!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Instructions.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Instructions.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Turn.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Turn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Win.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Win.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Die.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PigViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PigViewer.java" afterDir="false" />
     </list>
@@ -83,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676007830239</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished project!">
+      <created>1676065548757</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676065548758</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +103,18 @@
     <MESSAGE value="copied over code, started some draw methods" />
     <MESSAGE value="Worked on all classes, got window to work-ish" />
     <MESSAGE value="got project to work, need to define constants for turn display values, fix display things a bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="got project to work, need to define constants for turn display values, fix display things a bit" />
+    <MESSAGE value="Finished project!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished project!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Pig.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

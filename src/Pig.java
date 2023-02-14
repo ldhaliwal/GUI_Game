@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Pig {
 
     //Initializes dice
-    public static Die d1;
-    public static Die d2;
+    public Die d1;
+    public Die d2;
 
     //Initializes game
     public static boolean playingGame;
@@ -20,11 +20,12 @@ public class Pig {
     private PigViewer window;
 
     public Pig(){
-        window = new PigViewer(this, d1, d2);
+        window = new PigViewer(this);
 
         //Creates two default 6 sided dice
         d1 = new Die(window);
         d2 = new Die(window);
+
 
         //Creates the player's scorecard:
         playerScore = 0;
@@ -41,6 +42,8 @@ public class Pig {
     }
 
     public void run(){
+        window.setDice(d1, d2);
+
         //Prints instructions
         printInstructions();
         //updates the window to draw the instructions on screen
@@ -205,5 +208,13 @@ public class Pig {
 
     public int getTurnScore() {
         return turnScore;
+    }
+
+    public Die getD1() {
+        return d1;
+    }
+
+    public Die getD2() {
+        return d2;
     }
 }
